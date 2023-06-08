@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSV to JSON Converter</title>
+  <style>
+    /* CSS styles for the file upload section */
+    #upload-section {
+      margin-bottom: 20px;
+    }
+
+    #upload-section input[type="file"] {
+      display: none;
+    }
+
+    #upload-section label {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #3498db;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    #output-section {
+      white-space: pre;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div id="upload-section">
+    <input type="file" id="csvFile" accept=".csv">
+    <label for="csvFile">Upload CSV File</label>
+  </div>
+
+  <pre id="output-section"></pre>
+
+  <script src="script.js"></script>
+</body>
+</html>
