@@ -18,8 +18,9 @@ function handleFileSelect(event) {
     // Converting the CSV to JSON
     const json = convertCsvToJson(csv);
     
-    // Displaying the JSON in the output section
-    displayJson(json);
+    // Displaying or console output the JSON in the output section
+    // displayJson(json);
+    console.log(json);
   };
 
   // Start reading the file as text
@@ -47,7 +48,10 @@ function convertCsvToJson(csv) {
 
     // Looping through the headers and assigning values to corresponding keys in the object
     for (let j = 0; j < headers.length; j++) {
-      obj[headers[j]] = currentLine[j];
+      // Cleaning the value by removing leading/trailing whitespace and any special characters
+      const cleanedValue = cleanData(currentLine[j]);
+      
+      obj[headers[j]] = cleanedValue;
     }
 
     // Adding the object to the result array
@@ -56,6 +60,23 @@ function convertCsvToJson(csv) {
 
   // Returning the resulting JSON array
   return result;
+}
+
+// Function to clean the data
+function cleanData(value) {
+  // Check if the value exists
+  if (value) {
+    // Remove leading/trailing whitespace
+    let cleanedValue = value.trim();
+  
+    // Remove any special characters or symbols
+    cleanedValue = cleanedValue.replace(/[^\w\s]/gi, '');
+  
+    return cleanedValue;
+  }
+
+  // Return an empty string if the value is undefined or empty
+  return '';
 }
 
 // Function to display the JSON in the output section
